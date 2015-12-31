@@ -1,9 +1,10 @@
-import thread
+import threading
 import time
 
 x = 0
 y = 0
-s = 0
+s = threading.Lock()
+b = 0
 
 
 def x1():
@@ -12,29 +13,32 @@ def x1():
 	that x and y have updated. Once 's' is set function
 	prints multiple of x and y
     """
-    while True:
-        if s == 1:
-            print x, '*', y, '=', x*y
-            time.sleep(.2)
-
+    global b
+    while x < 20:
+        s.acquire()
+	if b != 0:
+		b = 0
+		print x, '*', y, '=', x*y
+	s.release()
 
 def x2():
     """
        It updates x and y in every onesecond
     """
-    while True:
-        global x
-        global y
-        global s
-        x += 1
-        y -= 1
-        s = 1
-        time.sleep(.1)
-        s = 0
-        time.sleep(1)
+    global b
+    global x
+    global y
+    while x < 20:
+	s.acquire()
+	if b == 0:
+		b = 1
+		x += 1
+		y -= 1
+        s.release()
 
 # Create two threads as follows
-thread.start_new_thread(x1, ())
-thread.start_new_thread(x2, ())
-while True:
-    pass
+t1 = threading.Thread(target = x1)
+t2 = threading.Thread(target = x2)
+
+t1.start()
+t2.start()
