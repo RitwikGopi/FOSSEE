@@ -1,0 +1,104 @@
+   1               		.file	"5.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               	.global	main
+  12               	main:
+  13               	.LFB0:
+  14               		.file 1 "5.c"
+   1:5.c           **** #include <avr/io.h>
+   2:5.c           **** #define F_CPU 8000000
+   3:5.c           **** 
+   4:5.c           **** main(){
+  15               		.loc 1 4 0
+  16               		.cfi_startproc
+  17 0000 CF93      		push r28
+  18               	.LCFI0:
+  19               		.cfi_def_cfa_offset 3
+  20               		.cfi_offset 28, -2
+  21 0002 DF93      		push r29
+  22               	.LCFI1:
+  23               		.cfi_def_cfa_offset 4
+  24               		.cfi_offset 29, -3
+  25 0004 CDB7      		in r28,__SP_L__
+  26 0006 DEB7      		in r29,__SP_H__
+  27               	.LCFI2:
+  28               		.cfi_def_cfa_register 28
+  29               	/* prologue: function */
+  30               	/* frame size = 0 */
+  31               	/* stack size = 2 */
+  32               	.L__stack_usage = 2
+   5:5.c           **** 	DDRD |= (1 << 5);
+  33               		.loc 1 5 0
+  34 0008 81E3      		ldi r24,lo8(49)
+  35 000a 90E0      		ldi r25,0
+  36 000c 21E3      		ldi r18,lo8(49)
+  37 000e 30E0      		ldi r19,0
+  38 0010 F901      		movw r30,r18
+  39 0012 2081      		ld r18,Z
+  40 0014 2062      		ori r18,lo8(32)
+  41 0016 FC01      		movw r30,r24
+  42 0018 2083      		st Z,r18
+   6:5.c           **** 	TCCR1A |= (1 << COM1A1) | (1 << WGM11);
+  43               		.loc 1 6 0
+  44 001a 8FE4      		ldi r24,lo8(79)
+  45 001c 90E0      		ldi r25,0
+  46 001e 2FE4      		ldi r18,lo8(79)
+  47 0020 30E0      		ldi r19,0
+  48 0022 F901      		movw r30,r18
+  49 0024 2081      		ld r18,Z
+  50 0026 2268      		ori r18,lo8(-126)
+  51 0028 FC01      		movw r30,r24
+  52 002a 2083      		st Z,r18
+   7:5.c           **** 	TCCR1B |= (1 << WGM13) | (1 << WGM12) | (1 << CS11);
+  53               		.loc 1 7 0
+  54 002c 8EE4      		ldi r24,lo8(78)
+  55 002e 90E0      		ldi r25,0
+  56 0030 2EE4      		ldi r18,lo8(78)
+  57 0032 30E0      		ldi r19,0
+  58 0034 F901      		movw r30,r18
+  59 0036 2081      		ld r18,Z
+  60 0038 2A61      		ori r18,lo8(26)
+  61 003a FC01      		movw r30,r24
+  62 003c 2083      		st Z,r18
+   8:5.c           **** 	ICR1 = 499;
+  63               		.loc 1 8 0
+  64 003e 86E4      		ldi r24,lo8(70)
+  65 0040 90E0      		ldi r25,0
+  66 0042 23EF      		ldi r18,lo8(-13)
+  67 0044 31E0      		ldi r19,lo8(1)
+  68 0046 FC01      		movw r30,r24
+  69 0048 3183      		std Z+1,r19
+  70 004a 2083      		st Z,r18
+   9:5.c           **** 	OCR1A = 250;
+  71               		.loc 1 9 0
+  72 004c 8AE4      		ldi r24,lo8(74)
+  73 004e 90E0      		ldi r25,0
+  74 0050 2AEF      		ldi r18,lo8(-6)
+  75 0052 30E0      		ldi r19,0
+  76 0054 FC01      		movw r30,r24
+  77 0056 3183      		std Z+1,r19
+  78 0058 2083      		st Z,r18
+  79               	.L2:
+  10:5.c           **** 	while(1);
+  80               		.loc 1 10 0 discriminator 1
+  81 005a 00C0      		rjmp .L2
+  82               		.cfi_endproc
+  83               	.LFE0:
+  85               	.Letext0:
+  86               		.file 2 "/usr/lib/avr/include/stdint.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 5.c
+     /tmp/ccBSl0P2.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccBSl0P2.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccBSl0P2.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccBSl0P2.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccBSl0P2.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccBSl0P2.s:12     .text:0000000000000000 main
+
+NO UNDEFINED SYMBOLS

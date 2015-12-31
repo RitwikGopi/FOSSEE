@@ -1,0 +1,96 @@
+   1               		.file	"4_a.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               	.global	main
+  12               	main:
+  13               	.LFB0:
+  14               		.file 1 "4_a.c"
+   1:4_a.c         **** #include <avr/io.h>
+   2:4_a.c         **** #define F_CPU 1000000
+   3:4_a.c         **** 
+   4:4_a.c         **** main(){
+  15               		.loc 1 4 0
+  16               		.cfi_startproc
+  17 0000 CF93      		push r28
+  18               	.LCFI0:
+  19               		.cfi_def_cfa_offset 3
+  20               		.cfi_offset 28, -2
+  21 0002 DF93      		push r29
+  22               	.LCFI1:
+  23               		.cfi_def_cfa_offset 4
+  24               		.cfi_offset 29, -3
+  25 0004 CDB7      		in r28,__SP_L__
+  26 0006 DEB7      		in r29,__SP_H__
+  27               	.LCFI2:
+  28               		.cfi_def_cfa_register 28
+  29               	/* prologue: function */
+  30               	/* frame size = 0 */
+  31               	/* stack size = 2 */
+  32               	.L__stack_usage = 2
+   5:4_a.c         **** 	DDRC &= ~(1<<0);
+  33               		.loc 1 5 0
+  34 0008 84E3      		ldi r24,lo8(52)
+  35 000a 90E0      		ldi r25,0
+  36 000c 24E3      		ldi r18,lo8(52)
+  37 000e 30E0      		ldi r19,0
+  38 0010 F901      		movw r30,r18
+  39 0012 2081      		ld r18,Z
+  40 0014 2E7F      		andi r18,lo8(-2)
+  41 0016 FC01      		movw r30,r24
+  42 0018 2083      		st Z,r18
+   6:4_a.c         **** 	PORTC |= (1<<0);
+  43               		.loc 1 6 0
+  44 001a 85E3      		ldi r24,lo8(53)
+  45 001c 90E0      		ldi r25,0
+  46 001e 25E3      		ldi r18,lo8(53)
+  47 0020 30E0      		ldi r19,0
+  48 0022 F901      		movw r30,r18
+  49 0024 2081      		ld r18,Z
+  50 0026 2160      		ori r18,lo8(1)
+  51 0028 FC01      		movw r30,r24
+  52 002a 2083      		st Z,r18
+   7:4_a.c         **** 	DDRB |= (1<<0);
+  53               		.loc 1 7 0
+  54 002c 87E3      		ldi r24,lo8(55)
+  55 002e 90E0      		ldi r25,0
+  56 0030 27E3      		ldi r18,lo8(55)
+  57 0032 30E0      		ldi r19,0
+  58 0034 F901      		movw r30,r18
+  59 0036 2081      		ld r18,Z
+  60 0038 2160      		ori r18,lo8(1)
+  61 003a FC01      		movw r30,r24
+  62 003c 2083      		st Z,r18
+  63               	.L2:
+   8:4_a.c         **** 	while(1)
+   9:4_a.c         **** 		PORTB = (1<<0) & PINC;
+  64               		.loc 1 9 0 discriminator 1
+  65 003e 88E3      		ldi r24,lo8(56)
+  66 0040 90E0      		ldi r25,0
+  67 0042 23E3      		ldi r18,lo8(51)
+  68 0044 30E0      		ldi r19,0
+  69 0046 F901      		movw r30,r18
+  70 0048 2081      		ld r18,Z
+  71 004a 2170      		andi r18,lo8(1)
+  72 004c FC01      		movw r30,r24
+  73 004e 2083      		st Z,r18
+  74 0050 00C0      		rjmp .L2
+  75               		.cfi_endproc
+  76               	.LFE0:
+  78               	.Letext0:
+  79               		.file 2 "/usr/lib/avr/include/stdint.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 4_a.c
+     /tmp/ccfd0MPz.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccfd0MPz.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccfd0MPz.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccfd0MPz.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccfd0MPz.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccfd0MPz.s:12     .text:0000000000000000 main
+
+NO UNDEFINED SYMBOLS
