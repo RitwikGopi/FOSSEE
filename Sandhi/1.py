@@ -9,9 +9,7 @@ b = 0
 
 def x1():
     """
-    	Checks a status variable 's' which indicates 
-	that x and y have updated. Once 's' is set function
-	prints multiple of x and y
+    	Prints multiple of x and y
     """
     global b
     while x < 20:
